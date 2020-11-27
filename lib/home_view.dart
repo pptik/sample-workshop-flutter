@@ -5,20 +5,18 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:workshop_du_di_simple/sensor_model.dart';
 
-class HomeView extends StatefulWidget{
-  _HomeViewState createState()=> _HomeViewState();
+class HomeView extends StatefulWidget {
+  _HomeViewState createState() => _HomeViewState();
 }
 
-class _HomeViewState extends State<HomeView>{
+class _HomeViewState extends State<HomeView> {
   List<SensorModel> _list = new List();
-  List<String> _sensor = ['Humidity','Temperature'];
+  List<String> _sensor = ['Humidity', 'Temperature'];
   final _random = new Random();
   Widget userList(BuildContext context, int index) {
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.blue
-        ),
+        border: Border.all(color: Colors.blue),
         borderRadius: BorderRadius.all(Radius.circular(10)),
         color: Colors.transparent,
       ),
@@ -36,20 +34,29 @@ class _HomeViewState extends State<HomeView>{
                 Text(
                   _list[index].title,
                   style: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18),
+                      height: 1.5,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 24),
                 ),
                 SizedBox(
                   height: 6,
                 ),
                 Text(_list[index].value,
                     style: TextStyle(
-                        color: Colors.black87, fontSize: 13, letterSpacing: .3)),
+                        height: 1.5,
+                        color: Colors.black54,
+                        fontSize: 18,
+                        letterSpacing: .3)),
                 SizedBox(
                   height: 6,
                 ),
                 Text('${_list[index].timestamp}',
                     style: TextStyle(
-                        color: Colors.black87, fontSize: 13, letterSpacing: .3)),
+                        height: 2.5,
+                        color: Colors.black45,
+                        fontSize: 13,
+                        letterSpacing: .3)),
               ],
             ),
           ),
@@ -57,6 +64,7 @@ class _HomeViewState extends State<HomeView>{
       ),
     );
   }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -64,22 +72,21 @@ class _HomeViewState extends State<HomeView>{
       appBar: AppBar(
         title: Text("Simple Application"),
       ),
-      body:Column(
-          children: <Widget>[
-            Expanded(
-              child: ListView.builder(
-                itemCount: _list.length,
-                itemBuilder: (BuildContext context,int index){
-                  return userList(context, index);
-                },
-              ),
-            )
-          ],
-        ),
-
+      body: Column(
+        children: <Widget>[
+          Expanded(
+            child: ListView.builder(
+              itemCount: _list.length,
+              itemBuilder: (BuildContext context, int index) {
+                return userList(context, index);
+              },
+            ),
+          )
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: (){
+        onPressed: () {
           randomSensor();
         },
       ),
@@ -87,32 +94,32 @@ class _HomeViewState extends State<HomeView>{
     throw UnimplementedError();
   }
 
-  void randomSensor(){
+  void randomSensor() {
     DateTime now = DateTime.now();
     String formattedDate = DateFormat('EEE,d MMM yyyy, HH:mm:ss a').format(now);
     var sensor = _sensor[_random.nextInt(_sensor.length)];
     print(sensor);
     setState(() {
-      if(sensor == 'Humidity'){
-        _list.insert(0,SensorModel(sensor,randomValue(sensor),formattedDate));
-      }else{
-        _list.insert(0,SensorModel(sensor,randomValue(sensor),formattedDate));
+      if (sensor == 'Humidity') {
+        _list.insert(
+            0, SensorModel(sensor, randomValue(sensor), formattedDate));
+      } else {
+        _list.insert(
+            0, SensorModel(sensor, randomValue(sensor), formattedDate));
       }
     });
   }
 
-  String randomValue(String sensor){
-    int min,max;
-    if(sensor == 'Humidity'){
+  String randomValue(String sensor) {
+    int min, max;
+    if (sensor == 'Humidity') {
       min = 0;
-      max =1000;
-      return '${min + _random.nextInt(max-min)} g/m\u00B3';
-    }else{
+      max = 1000;
+      return '${min + _random.nextInt(max - min)} g/m\u00B3';
+    } else {
       min = 20;
-      max =40;
-      return '${min + _random.nextInt(max-min)}°C';
+      max = 40;
+      return '${min + _random.nextInt(max - min)}°C';
     }
   }
-
-
 }
