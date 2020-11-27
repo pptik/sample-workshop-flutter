@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:workshop_du_di_simple/form_view.dart';
 import 'package:workshop_du_di_simple/home_view.dart';
 
 void main() {
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomeView(),
+      home: FormView(),
     );
   }
 }
