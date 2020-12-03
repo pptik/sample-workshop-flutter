@@ -26,8 +26,8 @@ class _FormViewState extends State<FormView>{
               maxLines: 2,
               controller:user_queue,
               decoration: InputDecoration(
-                hintText: "User Queue",
-                labelText: 'User Queue',
+                hintText: "User RMQ",
+                labelText: 'User RMQ',
               ),
             ),
             SizedBox(height: 20,),
@@ -36,8 +36,8 @@ class _FormViewState extends State<FormView>{
               maxLines: 2,
               controller:pass_queue,
               decoration: InputDecoration(
-                hintText: "Pass Queue",
-                labelText: 'Pass Queue',
+                hintText: "Password RMQ",
+                labelText: 'Password RMQ',
               ),
             ),
             SizedBox(height: 20,),
@@ -46,8 +46,8 @@ class _FormViewState extends State<FormView>{
               maxLines: 2,
               controller:vhost_queue,
               decoration: InputDecoration(
-                hintText: "Vhost Queue",
-                labelText: 'Virtual Host Queue',
+                hintText: "Virtual Host RMQ",
+                labelText: 'Virtual Host RMQ',
               ),
             ),
             SizedBox(height: 20,),
